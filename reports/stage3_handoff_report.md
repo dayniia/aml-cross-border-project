@@ -5,9 +5,10 @@
 - Evaluated performance using PR-AUC, ROC-AUC, Precision, Recall, and F1-Score.
 
 ## Key Metrics
-- **PR-AUC:** 0.0083
-- **ROC-AUC:** 0.7921
-  
+- **PR-AUC:** 0.1188 
+- **ROC-AUC:** 0.8207
+- **F1-Score:** 0.2383 
+
 ## Exported Artifacts (Google Drive)
 - `aml_lgbm_baseline.joblib` — Trained model pipeline
 - `feature_schema.json` — Final feature names and data types
