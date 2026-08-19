@@ -7802,10 +7802,11 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Anti-Money-Laundering-(AML)-Cross-Border-Transaction-Detection">Anti-Money Laundering (AML) Cross-Border Transaction Detection<a class="anchor-link" href="#Anti-Money-Laundering-(AML)-Cross-Border-Transaction-Detection">¶</a></h1><h2 id="Executive-Relay-Report-&amp;-System-Architecture">Executive Relay Report &amp; System Architecture<a class="anchor-link" href="#Executive-Relay-Report-&amp;-System-Architecture">¶</a></h2><p><strong>Project Stage:</strong> 5 — Final Report, Visualization &amp; Polish<br/>
-<strong>Dataset:</strong> IBM AML Synthetic Transaction Dataset (HI-Small / LI-Small)</p>
+<h1 id="Anti-Money-Laundering-(AML)-Cross-Border-Detection-Engine">Anti-Money Laundering (AML) Cross-Border Detection Engine<a class="anchor-link" href="#Anti-Money-Laundering-(AML)-Cross-Border-Detection-Engine">¶</a></h1><h2 id="Comprehensive-Relay-Report-&amp;-System-Architecture">Comprehensive Relay Report &amp; System Architecture<a class="anchor-link" href="#Comprehensive-Relay-Report-&amp;-System-Architecture">¶</a></h2><p><strong>Stage:</strong> 5 — Final Report, Network Visualization &amp; Submission Polish<br/>
+<strong>Dataset:</strong> IBM AML Synthetic Transaction Dataset</p>
 <hr/>
-<h3 id="Executive-Summary">Executive Summary<a class="anchor-link" href="#Executive-Summary">¶</a></h3><p>This report consolidates the end-to-end Machine Learning pipeline for detecting illicit cross-border financial transactions. By combining temporal feature engineering, class-weighted gradient boosting, and graph topology visualization, our system flags high-risk laundering operations while mitigating compliance alert fatigue.</p>
+<h3 id="Executive-Summary-&amp;-Business-Impact">Executive Summary &amp; Business Impact<a class="anchor-link" href="#Executive-Summary-&amp;-Business-Impact">¶</a></h3><p>Money laundering operations across international borders introduce critical financial compliance risks. This project establishes an end-to-end Machine Learning and Graph Analysis pipeline designed to detect complex laundering schemes—specifically targeting <strong>Fan-Out dispersal</strong> and <strong>Circular Flow layering</strong> topologies.</p>
+<p>By deploying an out-of-time temporal split, feature engineering targeting transactional burstiness, and class-weighted gradient boosting, our framework optimizes the <strong>Area Under the Precision-Recall Curve (AUPRC)</strong>. This minimizes false-positive alert fatigue for compliance officers while maintaining high recall on high-value illicit transfers.</p>
 </div>
 </div>
 </div>
@@ -7816,10 +7817,10 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Section-1:-Domain-Framing-&amp;-Temporal-EDA-(Person-1-Hand-Off)">Section 1: Domain Framing &amp; Temporal EDA (Person 1 Hand-Off)<a class="anchor-link" href="#Section-1:-Domain-Framing-&amp;-Temporal-EDA-(Person-1-Hand-Off)">¶</a></h3><ul>
-<li><strong>Laundering Stages:</strong> Placement, Layering, and Integration.</li>
-<li><strong>Validation Strategy:</strong> Out-of-time temporal train/test split to prevent future data leakage.</li>
-<li><strong>Headline Metric:</strong> Area Under the Precision-Recall Curve (AUPRC) and Recall at fixed False Positive budgets, addressing heavy class imbalance.</li>
+<h3 id="Stage-1:-Domain-Research,-EDA-&amp;-Problem-Framing-(Person-1-Hand-Off)">Stage 1: Domain Research, EDA &amp; Problem Framing (Person 1 Hand-Off)<a class="anchor-link" href="#Stage-1:-Domain-Research,-EDA-&amp;-Problem-Framing-(Person-1-Hand-Off)">¶</a></h3><ul>
+<li><strong>Laundering Mechanics:</strong> Mapped transactions across Placement, Layering, and Integration stages.</li>
+<li><strong>Validation Split:</strong> Implemented temporal split on transaction timestamps to prevent lookahead leakage.</li>
+<li><strong>Primary Metrics:</strong> Selected AUPRC and minority-class F1-score over accuracy due to extreme class imbalance.</li>
 </ul>
 </div>
 </div>
@@ -7831,9 +7832,9 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Section-2:-Feature-Engineering-(Person-2-Hand-Off)">Section 2: Feature Engineering (Person 2 Hand-Off)<a class="anchor-link" href="#Section-2:-Feature-Engineering-(Person-2-Hand-Off)">¶</a></h3><ul>
-<li><strong>Transactional Features:</strong> In/Out transaction ratios, cross-currency flags, and unique counterparty counts.</li>
-<li><strong>Behavioral Patterns:</strong> Transaction burstiness within rolling time windows and round-number threshold indicators.</li>
+<h3 id="Stage-2:-Feature-Engineering-(Person-2-Hand-Off)">Stage 2: Feature Engineering (Person 2 Hand-Off)<a class="anchor-link" href="#Stage-2:-Feature-Engineering-(Person-2-Hand-Off)">¶</a></h3><ul>
+<li><strong>Account Dynamics:</strong> Extracted in/out transaction ratios, unique counterparty counts, and cross-border currency indicators.</li>
+<li><strong>Pattern Signals:</strong> Calculated rolling-window transaction burstiness and flagged round-number threshold values.</li>
 </ul>
 </div>
 </div>
@@ -7845,9 +7846,9 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Section-3:-Model-Performance-&amp;-Explainability-(Persons-3-&amp;-4-Hand-Off)">Section 3: Model Performance &amp; Explainability (Persons 3 &amp; 4 Hand-Off)<a class="anchor-link" href="#Section-3:-Model-Performance-&amp;-Explainability-(Persons-3-&amp;-4-Hand-Off)">¶</a></h3><ul>
-<li><strong>Baseline Model:</strong> Class-weighted XGBoost.</li>
-<li><strong>Explainability:</strong> SHAP global feature importances confirm transaction frequency, burstiness, and counterparty volume as primary drivers for illicit predictions.</li>
+<h3 id="Stage-3:-Baseline-Model-Training-(Person-3-Hand-Off)">Stage 3: Baseline Model Training (Person 3 Hand-Off)<a class="anchor-link" href="#Stage-3:-Baseline-Model-Training-(Person-3-Hand-Off)">¶</a></h3><ul>
+<li><strong>Model Selection:</strong> Trained class-weighted XGBoost to prioritize low-frequency positive illicit class instances.</li>
+<li><strong>Tuning Strategy:</strong> Optimized tree depth, learning rate, and <code>scale_pos_weight</code> parameters for stable convergence.</li>
 </ul>
 </div>
 </div>
@@ -7859,7 +7860,21 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Section-4:-Network-Topology-Visualizations">Section 4: Network Topology Visualizations<a class="anchor-link" href="#Section-4:-Network-Topology-Visualizations">¶</a></h3><p>Below are the generated sub-graph representations of detected money laundering topologies:</p>
+<h3 id="Stage-4:-Evaluation,-Cost-Trade-off-&amp;-SHAP-Explainability-(Person-4-Hand-Off)">Stage 4: Evaluation, Cost Trade-off &amp; SHAP Explainability (Person 4 Hand-Off)<a class="anchor-link" href="#Stage-4:-Evaluation,-Cost-Trade-off-&amp;-SHAP-Explainability-(Person-4-Hand-Off)">¶</a></h3><ul>
+<li><strong>Explainability:</strong> Applied SHAP values to confirm feature importances (burstiness, counterparty count, amount dynamics).</li>
+<li><strong>Cost Analysis:</strong> Balanced operational investigation costs (false alarms) against financial non-compliance penalties.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Stage-5:-Graph-Topologies-&amp;-Network-Visualizations">Stage 5: Graph Topologies &amp; Network Visualizations<a class="anchor-link" href="#Stage-5:-Graph-Topologies-&amp;-Network-Visualizations">¶</a></h3><p>Below are high-resolution sub-graph visualizations illustrating key illicit pattern topologies:</p>
 </div>
 </div>
 </div>
@@ -7873,7 +7888,7 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
 
-<span class="c1"># Display generated topology plots</span>
+<span class="c1"># Render topology visualization plots</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">'visualizations/pattern_topology_1.png'</span><span class="p">))</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">'visualizations/pattern_topology_2.png'</span><span class="p">))</span>
 </pre></div>
