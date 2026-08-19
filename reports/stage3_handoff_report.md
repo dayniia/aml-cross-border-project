@@ -5,9 +5,9 @@
 - Evaluated performance using PR-AUC, ROC-AUC, Precision, Recall, and F1-Score.
 
 ## Key Metrics
-- **PR-AUC:** [Insert Value, e.g., 0.82]
-- **ROC-AUC:** [Insert Value, e.g., 0.94]
-- **F1-Score:** [Insert Value]
+- **PR-AUC:** 0.1188 
+- **ROC-AUC:** 0.8207
+- **F1-Score:** 0.2383 
 
 ## Exported Artifacts (Google Drive)
 - `aml_lgbm_baseline.joblib` — Trained model pipeline
